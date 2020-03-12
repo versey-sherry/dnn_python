@@ -81,7 +81,7 @@ def dnn(h1_node=9, h2_node=10, epoch =100, lr = 0.1):
         output = sigmoid(layer2o)
         sum(np.argmax(output, axis = 0) == y_test)/len(y_test)
 
-    print("accuracy is", sum(np.argmax(output, axis = 0) == y_test)/len(y_test))
+    print("accuracy is", round(sum(np.argmax(output, axis = 0) == y_test)/len(y_test),4))
 
 
 
@@ -91,6 +91,9 @@ def main():
     lr = float(input("Input your desired learning rate, eg. 0.2: "))
     h1_node = int(node_number.split()[0])
     h2_node = int(node_number.split()[1])
+    print('\nThe input layer has 5 nodes\nThe first hidden layer has {0} nodes\nThe second hidden layer has {1} nodes\nThe output layer has 3 nodes.'.format( h1_node, h2_node))
+    print('There are {0} training epochs, and the learning rate is {1}'.format(epoch, lr))
+
     now = time.time()
     dnn(h1_node, h2_node, epoch, lr)
     print("Time difference is", time.time()-now, "seconds")
